@@ -68,7 +68,7 @@ let login = async (req, res, next) => {
 
                 const token = generateAccessToken(body)
 
-                return res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: 86400000 }).json({
+                return res.cookie('jwt', token, { httpOnly: true, secure: false, maxAge: 86400000 }).json({
                     status: true,
                     content: {
                         data: {
@@ -132,7 +132,7 @@ let register = async (req, res, next) => {
 
             const token = generateAccessToken(body)
 
-            return res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: 86400000 }).json({
+            return res.cookie('jwt', token, { httpOnly: true, secure: false, maxAge: 86400000 }).json({
                 status: true,
                 content: {
                     data: {
