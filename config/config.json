@@ -1,0 +1,41 @@
+{
+	"development": {
+		"username": "kaustav",
+		"password": "kaustav",
+		"database": "tfi",
+		"host": "65.2.125.6",
+		"dialect": "postgres",
+		"pool": {
+			"max": 5,
+			"min": 0,
+			"acquire": 30000,
+			"idle": 10000
+		}
+	},
+	"test": {
+		"username": "kaustav",
+		"password": "kaustav",
+		"database": "tfi",
+		"host": "65.2.125.6",
+		"dialect": "postgres",
+		"pool": {
+			"max": 5,
+			"min": 0,
+			"acquire": 30000,
+			"idle": 10000
+		}
+	},
+	"production": {
+		"username": "kaustav",
+		"password": "kaustav",
+		"database": "tfi",
+		"host": "65.2.125.6",
+		"dialect": "postgres",
+		"pool": {
+			"max": 5,
+			"min": 0,
+			"acquire": 30000,
+			"idle": 10000
+		}
+	}
+}
