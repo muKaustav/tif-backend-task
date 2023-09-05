@@ -1,30 +1,31 @@
 {
-  "name": "tif-backend-task",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@theinternetfolks/snowflake": "^1.3.0",
-    "bcrypt": "^5.1.1",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "fs": "^0.0.1-security",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.0",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "pg": "^8.11.3",
-    "sequelize": "^6.32.1",
-    "sequelize-cli": "^6.6.1",
-    "validatorjs": "^3.22.1"
-  }
+	"name": "tif-backend-task",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@theinternetfolks/snowflake": "^1.3.0",
+		"bcrypt": "^5.1.1",
+		"chai-http": "^4.4.0",
+		"cookie-parser": "^1.4.6",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"fs": "^0.0.1-security",
+		"jsonwebtoken": "^9.0.2",
+		"mysql2": "^3.6.0",
+		"passport": "^0.6.0",
+		"passport-local": "^1.0.0",
+		"path": "^0.12.7",
+		"pg": "^8.11.3",
+		"sequelize": "^6.32.1",
+		"sequelize-cli": "^6.6.1",
+		"validatorjs": "^3.22.1"
+	}
 }

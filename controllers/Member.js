@@ -65,6 +65,16 @@ let addMember = async (req, res, next) => {
         })
     }
 
+    if (role.id === '7104861668143292891') {
+        return res.status(403).json({
+            status: false,
+            errors: [{
+                message: 'Only one Community Admin.',
+                code: 'NOT_ALLOWED_ACCESS',
+            }]
+        })
+    }
+
     let userExists = await User.findOne({
         where: {
             id: req.body.user,
