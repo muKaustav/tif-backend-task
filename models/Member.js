@@ -1,4 +1,3 @@
-const Validator = require('validatorjs')
 const { Snowflake } = require('@theinternetfolks/snowflake')
 
 module.exports = (sequelize, DataTypes) => {
@@ -8,11 +7,46 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: () => Snowflake.generate(),
             primaryKey: true,
         },
-        user: DataTypes.STRING,
-        community: DataTypes.STRING,
-        role: DataTypes.STRING,
-    }, {
-        timestamps: true,
+        user: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                async isUser(value) {
+                    const user = await sequelize.models.User.findByPk(value)
+                    if (!user) {
+                        throw new Error('User does not exist')
+                    }
+                },
+            },
+        },
+        community: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                async isCommunity(value) {
+                    const community = await sequelize.models.Community.findByPk(value)
+                    if (!community) {
+                        throw new Error('Community does not exist')
+                    }
+                },
+            },
+        },
+        role: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                async isRole(value) {
+                    const role = await sequelize.models.Role.findByPk(value)
+                    if (!role) {
+                        throw new Error('Role does not exist')
+                    }
+                },
+            },
+        },
+        created_at: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+        }
     })
 
     Member.associate = models => {

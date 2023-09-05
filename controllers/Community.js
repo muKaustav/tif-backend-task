@@ -25,9 +25,9 @@ let createCommunity = async (req, res, next) => {
         await Member.create({
             user: req.user.id,
             community: community.id,
-            role: '7104793578577655424',
+            role: '7104861668143292891',
         })
-
+        
         return res.status(201).json({
             status: true,
             content: {
@@ -292,7 +292,7 @@ let getMyCommunitiesAsMember = async (req, res, next) => {
     let limit = parseInt(req.query.limit) || 10
     let page = parseInt(req.query.page) || 1
     let offset = (page - 1) * limit
-    
+
     if (page < 1) return res.status(400).json({
         status: false,
         errors: {

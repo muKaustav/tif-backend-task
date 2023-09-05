@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         name: {
             type: DataTypes.STRING,
+            unique: true,
             validate: {
                 validator: (value) => {
                     const validation = new Validator({ name: value }, { name: 'required|string|min:2|max:255' })
@@ -18,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
                     }
                 },
             },
-            unique: true,
         },
         scopes: {
             type: DataTypes.ARRAY(DataTypes.STRING),

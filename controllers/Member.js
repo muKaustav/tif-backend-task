@@ -125,7 +125,7 @@ let removeMember = async (req, res, next) => {
             user: user.id,
             community: member.community,
             role: {
-                [Op.or]: ['7104793578577655424', '7104803758190744252']
+                [Op.or]: ['7104861668143292891', '7104861794554047313']
             }
         }
     })
