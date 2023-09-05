@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             validate: {
                 validator: (value) => {
-                    const validation = new Validator({ name: value }, { name: 'required|string|min:3|max:255' })
+                    const validation = new Validator({ name: value }, { name: 'required|string|min:2|max:255' })
                     if (validation.fails()) {
                         throw new Error(validation.errors.first('name'))
                     }
@@ -24,9 +24,20 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             validate: {
                 validator: (value) => {
-                    const validation = new Validator({ slug: value }, { slug: 'required|string|min:3|max:255' })
+                    const validation = new Validator({ slug: value }, { slug: 'required|string|min:2|max:255' })
                     if (validation.fails()) {
                         throw new Error(validation.errors.first('slug'))
+                    }
+                },
+            },
+        },
+        owner: {
+            type: DataTypes.STRING,
+            validate: {
+                validator: (value) => {
+                    const validation = new Validator({ owner: value }, { owner: 'required|string|min:2|max:255' })
+                    if (validation.fails()) {
+                        throw new Error(validation.errors.first('owner'))
                     }
                 },
             },

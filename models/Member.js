@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: () => Snowflake.generate(),
             primaryKey: true,
         },
+        user: DataTypes.STRING,
+        community: DataTypes.STRING,
+        role: DataTypes.STRING,
     }, {
         timestamps: true,
     })
