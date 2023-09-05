@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 5000
 db.sequelize.sync().then(() => {
     console.log('Database connected')
 
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}.`))
 }).catch(err => {
     console.log('Unable to connect to the database:', err)
 })
