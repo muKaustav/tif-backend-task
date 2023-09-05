@@ -18,10 +18,7 @@ app.use(cookieParser())
 app.get('/', (req, res) => {
     res.json({
         message: 'Welcome to the TFI🚀 API',
-        role: '/v1/role',
-        auth: '/v1/auth',
-        community: '/v1/community',
-        member: '/v1/member'
+        postman: 'https://drive.google.com/file/d/1ZHlDiD0LKOsAvi-yNNw1M5oQ8jUl6P7D/view?usp=sharing',
     })
 })
 
