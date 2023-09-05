@@ -27,7 +27,7 @@ let createCommunity = async (req, res, next) => {
             community: community.id,
             role: '7104861668143292891',
         })
-        
+
         return res.status(201).json({
             status: true,
             content: {
@@ -42,7 +42,6 @@ let createCommunity = async (req, res, next) => {
             }
         })
     } catch (error) {
-        console.log(error)
         if (error.name === 'SequelizeValidationError') {
             return res.status(400).json({
                 status: false,
@@ -114,12 +113,14 @@ let getCommunities = async (req, res, next) => {
             ]
         })
 
+        let total = await Community.count()
+
         return res.status(200).json({
             status: true,
             content: {
                 meta: {
-                    total: communities.length,
-                    pages: Math.ceil(communities.length / limit),
+                    total: total,
+                    pages: Math.ceil(total / limit),
                     page: page,
                 },
                 data: communities.map(community => {
@@ -135,7 +136,6 @@ let getCommunities = async (req, res, next) => {
             }
         })
     } catch (error) {
-        console.log(error)
         return res.status(500).json({
             status: false,
             errors: {
@@ -191,12 +191,18 @@ let getCommunityMembers = async (req, res, next) => {
             ]
         })
 
+        let total = await Member.count({
+            where: {
+                community: req.params.id
+            }
+        })
+
         return res.status(200).json({
             status: true,
             content: {
                 meta: {
-                    total: members.length,
-                    pages: Math.ceil(members.length / limit),
+                    total: total,
+                    pages: Math.ceil(total / limit),
                     page: page,
                 },
                 data: members.map(member => {
@@ -211,7 +217,6 @@ let getCommunityMembers = async (req, res, next) => {
             }
         })
     } catch (error) {
-        console.log(error)
         return res.status(500).json({
             status: false,
             errors: {
@@ -255,12 +260,18 @@ let getMyCommunitiesAsOwner = async (req, res, next) => {
             }
         })
 
+        let total = await Community.count({
+            where: {
+                owner: req.user.id
+            }
+        })
+
         return res.status(200).json({
             status: true,
             content: {
                 meta: {
-                    total: communities.length,
-                    pages: Math.ceil(communities.length / limit),
+                    total: total,
+                    pages: Math.ceil(total / limit),
                     page: page,
                 },
                 data: communities.map(community => {
@@ -276,7 +287,6 @@ let getMyCommunitiesAsOwner = async (req, res, next) => {
             }
         })
     } catch (error) {
-        console.log(error)
         return res.status(500).json({
             status: false,
             errors: {
@@ -364,7 +374,6 @@ let getMyCommunitiesAsMember = async (req, res, next) => {
             },
         })
     } catch (error) {
-        console.log(error)
         return res.status(500).json({
             status: false,
             errors: {

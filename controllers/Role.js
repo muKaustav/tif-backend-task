@@ -85,12 +85,14 @@ let getRoles = async (req, res, next) => {
             offset: offset
         })
 
+        let total = await Role.count()
+
         return res.status(200).json({
             status: true,
             content: {
                 meta: {
-                    total: roles.length,
-                    pages: Math.ceil(roles.length / limit),
+                    total: total,
+                    pages: Math.ceil(total / limit),
                     page: page,
                 },
                 data: roles.map(role => {
